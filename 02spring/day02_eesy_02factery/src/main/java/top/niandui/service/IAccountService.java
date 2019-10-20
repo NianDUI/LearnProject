@@ -1,4 +1,9 @@
 package top.niandui.service;
 
-public class IAccountService {
+public interface IAccountService {
+
+    /**
+     * 模拟保存账户
+     */
+    void saveAccount();
 }
