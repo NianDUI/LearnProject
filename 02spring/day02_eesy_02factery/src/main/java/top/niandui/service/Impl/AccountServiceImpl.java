@@ -1,7 +1,8 @@
 package top.niandui.service.Impl;
 
 import top.niandui.dao.IAccountDao;
-import top.niandui.dao.impl.AccountDao;
+import top.niandui.dao.impl.AccountDaoImpl;
+import top.niandui.factory.BeanFactory;
 import top.niandui.service.IAccountService;
 
 /**
@@ -9,9 +10,15 @@ import top.niandui.service.IAccountService;
  */
 public class AccountServiceImpl implements IAccountService {
 
-    private IAccountDao accountDao = new AccountDao();
+//    private IAccountDao accountDao = new AccountDaoImpl();
+    private IAccountDao accountDao = (IAccountDao) BeanFactory.getBean("accountDao");
+
+//    private int i = 1;
 
     public void saveAccount() {
+        int i = 1;
         accountDao.saveAccount();
+        System.out.println(i);
+        i++;
     }
 }

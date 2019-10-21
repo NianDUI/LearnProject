@@ -1,5 +1,6 @@
 package top.niandui.ui;
 
+import top.niandui.factory.BeanFactory;
 import top.niandui.service.IAccountService;
 import top.niandui.service.Impl.AccountServiceImpl;
 
@@ -8,7 +9,11 @@ import top.niandui.service.Impl.AccountServiceImpl;
  */
 public class Client {
     public static void main(String[] args) {
-        IAccountService accountService = new AccountServiceImpl();
-        accountService.saveAccount();
+//        IAccountService accountService = new AccountServiceImpl();
+        for (int i = 0; i < 5; i++) {
+            IAccountService accountService = (IAccountService) BeanFactory.getBean("accountService");
+            System.out.println(accountService);
+            accountService.saveAccount();
+        }
     }
 }
