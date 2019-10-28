@@ -16,6 +16,7 @@ import java.beans.PropertyVetoException;
  * spring中的新注解
  * @Configuration
  *      作用：指定当前类是一个配置类
+ *      细节：当配置类作为AnnotationConfigApplicationContext对象创建的参数时，该注解可以不写。
  *
  * @ComponentScan
  *      作用：用于通过注解指定spring在创建容器时要扫描的包
