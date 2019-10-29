@@ -2,10 +2,7 @@ package config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.apache.commons.dbutils.QueryRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 import javax.sql.DataSource;
 import java.beans.PropertyVetoException;
@@ -33,6 +30,17 @@ import java.beans.PropertyVetoException;
  *          当我们使用注解配置方法时，如果方法有参数，spring框架会去容器中查找有没有可用的bean对象
  *          查找的方式和Autowired注解的作用是一样的
  *
+ * @Import:
+ *      作用：用于导入其他的配置类
+ *      属性：
+ *          value：用于指定其他的配置类的子节码。
+ *                  当我使用@Import的注解之后，有@Import注解的类就是父配置类，而导入的类就是子配置类。
+ *
+ * @PropertySource:
+ *      作用：用于指定properties文件的位置
+ *      属性：
+ *          value：指定文件的名称和路径。
+ *              关键字：classpath，表示类路径下。
  */
 @Configuration
 /**
@@ -44,51 +52,13 @@ import java.beans.PropertyVetoException;
 @ComponentScan("top.niandui")
 //@ComponentScan(value = "top.niandui")
 //@ComponentScan(basePackages = "top.niandui")
+
+//@ComponentScan({"top.niandui", "config"}) // 使用该注解时，需要在自配置类中使用@Configuration注解
+// 当时用@Import时，JdbcConfig类可以不使用@Configuration和在@ComponentScan中指定要扫描的包
+@Import(JdbcConfig.class)
+
+@PropertySource("classpath:jdbcConfig.properties")
 public class SpringConfiguration {
-
-    /**
-     * 用于创建一个QueryRunner对象
-     * @param dataSource
-     * @return
-     *     <!-- 配置QueryRunner
-     *         scope="prototype" 保证每次使用都是创建一个新对象
-     *     -->
-     *     <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
-     *         <!-- 注入数据源 -->
-     *         <constructor-arg name="ds" ref="dataSource"></constructor-arg>
-     *     </bean>
-     */
-    @Bean(name = "runner")
-    @Scope("prototype") // 设置bean对象的作用域（单例还是多例）
-    public QueryRunner createQueryRunner(DataSource dataSource) {
-        return new QueryRunner(dataSource);
-    }
-
-    /**
-     * 创建数据源对象
-     * @return
-     *     <!-- 配置数据源 -->
-     *     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-     *         <!-- 链接数据库的必备信息 -->
-     *         <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-     *         <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/eesy"></property>
-     *         <property name="user" value="root"></property>
-     *         <property name="password" value="root"></property>
-     *      </bean>
-     */
-    @Bean(name = "dataSource")
-    public DataSource createDataSource() {
-        try {
-            ComboPooledDataSource ds = new ComboPooledDataSource();
-            ds.setDriverClass("com.mysql.jdbc.Driver");
-            ds.setJdbcUrl("jdbc:mysql://localhost:3306/eesy");
-            ds.setUser("root");
-            ds.setPassword("root");
-            return ds;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 
 
 }
