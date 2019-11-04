@@ -74,7 +74,7 @@ import javax.annotation.Resource;
  * 4、 和生命周期相关的注解
  *      他们的作用就和在bean标签中使用init-method和destroy-method属性实现的功能是一样的
  *      @PostConstruct
- *          作用：用于指定初始化方法
+ *          作用：用于指定初始化方法.
  *      @PreDestroy
  *          作用：用于指定销毁方法
  *
