@@ -3,6 +3,7 @@ package top.niandui.test;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,12 +22,22 @@ import java.util.List;
 public class AccountServiceTest {
 
     @Autowired
+    @Qualifier("accountService_OLD")
     private IAccountService accountService;
 
+    @Test
+    public void testTransfer_OLD() {
+        accountService.transfer("aaa", "bbb", 100f );
+    }
+
+
+    @Autowired
+    @Qualifier("proxyAccountService")
+    private IAccountService proxyAccountService;
 
     @Test
     public void testTransfer() {
-        accountService.transfer("aaa", "bbb", 100f );
+        proxyAccountService.transfer("aaa", "bbb", 100f );
     }
 
 }

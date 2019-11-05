@@ -1,4 +1,9 @@
-package top.niandui.proxy;
+package top.niandui.cglib;
+
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+import top.niandui.proxy.IProducer;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -19,34 +24,34 @@ public class Client {
          *  分类：
          *      基于接口的动态代理
          *      基于子类的动态代理
-         *  基于接口的动态代理：
-         *      涉及的类：Proxy
-         *      提供者：JDK官方
+         *  基于子类的动态代理：
+         *      涉及的类：Enhancer
+         *      提供者：第三方cglib库
          *  如何创建代理对象：
-         *      使用Proxy类中的newProxyInstance方法
+         *      使用Enhancer类中的create方法
          *  创建代理对象的要求：
-         *      被代理类最少实现一个接口，如果没有则不能使用。
-         *  newProxyInstance方法的参数：
-         *      ClassLoader：类加载器
-         *          它是用于加载代理对象字节码的。和被代理对象使用相同的类加载器。固定写法。
-         *      Class[]：字节码数组(接口的字节码数组)
-         *          它是用于让代理对象和被代理对象有相同的方法。固定写法。
-         *      InvocationHandler：用于提供增强的代码
+         *      被代理对象不能是最终类
+         *  create方法的参数：
+         *      Class：字节码
+         *          它是用于指定被代理对象的的字节码。
+         *      Callback：用于提供增强的代码
          *          它是让我们写如何代理。我们一般都是写一个该接口的实现类，通常他情况下都是匿名内部类，但不是必须的。
          *          此接口的实现类都是谁用谁写。
+         *          我们一般写的都是该接口的子接口实现类：MethodInterceptor（方法拦截器）
          */
-        IProducer proxyProducer = (IProducer) Proxy.newProxyInstance(producer.getClass().getClassLoader(),
-                producer.getClass().getInterfaces(),
-                new InvocationHandler() {
+        Producer cglibProducer = (Producer) Enhancer.create(producer.getClass(),
+                new MethodInterceptor() {
                     /**
-                     * 作用：执行被代理对象的任何接口方法都会经过该方法
-                     * @param proxy     代理对象的引用
-                     * @param method    当前执行的方法
-                     * @param args      当前执行方法所需要的参数
-                     * @return          和被代理对象方法具有相同的返回值
+                     * 执行被代理对象的任何方法都会经过该方法
+                     * @param proxy
+                     * @param method
+                     * @param args
+                     *      以上三个参数和给予接口的动态代理中invoke方法的参数是一样的
+                     * @param methodProxy   ：当前执行方法的代理对象
+                     * @return
                      * @throws Throwable
                      */
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                    public Object intercept(Object proxy, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
                         // 提供增强的代码
                         Object returnValue = null;
                         // 1. 获取方法执行的参数
@@ -59,8 +64,8 @@ public class Client {
                         return returnValue;
                     }
                 });
-        proxyProducer.saleProduct(1000f);
 
+        cglibProducer.saleProduct(12000f);
 
     }
 }

@@ -39,7 +39,7 @@ public class AccountServiceImpl_OLD implements IAccountService {
         } catch (Exception e) {
             // 5. 回滚操作
             txManager.rollback();
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         } finally {
             // 6. 释放连接
             txManager.release();
@@ -60,7 +60,7 @@ public class AccountServiceImpl_OLD implements IAccountService {
         } catch (Exception e) {
             // 5. 回滚操作
             txManager.rollback();
-            throw new RuntimeException();
+            throw new RuntimeException(e);
         } finally {
             // 6. 释放连接
             txManager.release();
@@ -80,6 +80,7 @@ public class AccountServiceImpl_OLD implements IAccountService {
         } catch (Exception e) {
             // 5. 回滚操作
             txManager.rollback();
+            throw new RuntimeException(e);
         } finally {
             // 6. 释放连接
             txManager.release();
@@ -99,10 +100,11 @@ public class AccountServiceImpl_OLD implements IAccountService {
         } catch (Exception e) {
             // 5. 回滚操作
             txManager.rollback();
+            throw new RuntimeException(e);
         } finally {
             // 6. 释放连接
             txManager.release();
-        }accountDao.updateAccount(account);
+        }
     }
 
     public void deleteAccount(Integer accountId) {
@@ -117,6 +119,7 @@ public class AccountServiceImpl_OLD implements IAccountService {
         } catch (Exception e) {
             // 5. 回滚操作
             txManager.rollback();
+            throw new RuntimeException(e);
         } finally {
             // 6. 释放连接
             txManager.release();
@@ -124,6 +127,7 @@ public class AccountServiceImpl_OLD implements IAccountService {
     }
 
     public void transfer(String sourceName, String targetName, Float money) {
+        System.out.println("transfer..........");
         try {
             // 1. 开启事务
             txManager.beginTransaction();
@@ -149,6 +153,7 @@ public class AccountServiceImpl_OLD implements IAccountService {
         } catch (Exception e) {
             // 5. 回滚操作
             txManager.rollback();
+            throw new RuntimeException(e);
         } finally {
             // 6. 释放连接
             txManager.release();
