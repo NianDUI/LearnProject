@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * 账户的业务层接口
+ *
+ * 所有方法都是连接点，被增强的是切入点
  */
 public interface IAccountService {
 
@@ -47,5 +49,10 @@ public interface IAccountService {
      * @param money         转账金额
      */
     void transfer(String sourceName, String targetName, Float money);
+
+
+    default void test() { // 它只是连接点，但不是切入点，因为没有倍增强化
+        System.out.println("test方法,没有被增强");
+    }
 
 }

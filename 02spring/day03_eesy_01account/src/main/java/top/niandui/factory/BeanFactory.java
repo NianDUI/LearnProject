@@ -42,6 +42,9 @@ public class BeanFactory {
                      */
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                         try {
+                            if ("test".equals(method.getName())) {
+                                return method.invoke(accountService, args);
+                            }
                             Object rtValue = null;
                             // 1. 开启事务
                             txManager.beginTransaction();

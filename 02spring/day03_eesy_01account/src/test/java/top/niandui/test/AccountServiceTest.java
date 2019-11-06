@@ -40,4 +40,9 @@ public class AccountServiceTest {
         proxyAccountService.transfer("aaa", "bbb", 100f );
     }
 
+
+    @Test
+    public void test() {
+        proxyAccountService.test();
+    }
 }
