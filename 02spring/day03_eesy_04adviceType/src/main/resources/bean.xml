@@ -17,7 +17,7 @@
     <aop:config>
         <!-- 配置切面 -->
         <aop:aspect id="logAdvice" ref="logger">
-            <!-- 配置通知：在切入点方法执行之前执行 -->
+            <!-- 配置通知：在切入点方法执行之前执行  -->
             <aop:before method="beforePrintLog" pointcut="execution(* top.niandui.service.impl.*.*(..))"></aop:before>
 
             <!-- 后置通知：在切入点方法正常执行之后执行 -->
