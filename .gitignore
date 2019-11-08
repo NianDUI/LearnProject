@@ -1,0 +1,6 @@
+# java 
+
+.git/
+.idea/
+**/out/
+**/target/
