@@ -5,8 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>top.niandui</groupId>
-    <artifactId>LeanProject</artifactId>
+    <artifactId>LearnProject</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+
+    <modules>
+        <module>01nio</module>
+        <module>02spring</module>
+    </modules>
 </project>
