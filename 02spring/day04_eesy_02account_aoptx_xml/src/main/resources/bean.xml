@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 配置Service -->
+    <bean id="accountService" class="top.niandui.service.impl.AccountServiceImpl">
+        <!-- 注入dao -->
+        <property name="accountDao" ref="accountDao"></property>
+    </bean>
+
+    <!-- 配置Dao -->
+    <bean id="accountDao" class="top.niandui.dao.impl.AccountDaoImpl">
+        <!-- 注入QueryRunner -->
+        <property name="runner" ref="runner"></property>
+        <!-- 注入ConnectionUtils-->
+        <property name="connectionUtils" ref="connectionUtils"></property>
+    </bean>
+
+    <!-- 配置QueryRunner
+        scope="prototype" 保证每次使用都是创建一个新对象
+    -->
+    <bean id="runner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype">
+        <!-- 注入数据源 -->
+        <!--<constructor-arg name="ds" ref="dataSource"></constructor-arg>-->
+        <!--没有注入数据源-->
+    </bean>
+
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!-- 链接数据库的必备信息 -->
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/eesy"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="root"></property>
+     </bean>
+
+    <!--配置Connection的工具类，ConnectionUtils-->
+    <bean id="connectionUtils" class="top.niandui.utils.ConnectionUtils">
+        <!-- 注入数据源 -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 配置事务管理器-->
+    <bean id="txManager" class="top.niandui.utils.TransactionManager">
+        <!-- 注入ConnectionUtils-->
+        <property name="connectionUtils" ref="connectionUtils"></property>
+    </bean>
+
+    <!-- 配置aop -->
+    <aop:config>
+        <!-- 配置通用切入点表达式 -->
+        <aop:pointcut id="pt" expression="execution(* top.niandui.service.impl.*.*(..))"/>
+        <!-- 配置切面 -->
+        <aop:aspect id="txAdvice" ref="txManager">
+            <!-- 配置前置通知：开启事务 -->
+            <aop:before method="beginTransaction" pointcut-ref="pt"></aop:before>
+            <!-- 配置后置通知：提交事务 -->
+            <aop:after-returning method="commit" pointcut-ref="pt"></aop:after-returning>
+            <!-- 配置异常通知：会馆事务 -->
+            <aop:after-throwing method="rollback" pointcut-ref="pt"></aop:after-throwing>
+            <!-- 配置最终通知：释放连接 -->
+            <aop:after method="release" pointcut-ref="pt"></aop:after>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
