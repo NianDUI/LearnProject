@@ -50,9 +50,9 @@
                 死亡：容器销毁，对象死亡
                 总结：单例对象的生命周期和容器相同
             多利对象：
-                出生：当我们适用对象时spring框架为我们创建
-                活着：
-                死亡：
+                出生：当我们使用对象时spring框架为我们创建
+                活着：对象只要是在使用过程中就一直活着。
+                死亡：当对象上时间不用，且没有别的对象引用时，有Java的垃圾回收其回收
 
     -->
     <bean id="accountService" class="top.niandui.service.Impl.AccountServiceImpl"

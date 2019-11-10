@@ -1,15 +1,28 @@
 package top.niandui.utils;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.stereotype.Component;
 
 /**
  * 用于记录日志的工具类，它里面提供了公共的代码
+ *
+ * @EnableAspectJAutoProxy
+ *      用于在主配置类上，表示开始基于注解的aop配置
  */
+
+@Component("logger")
+@Aspect // 表示当前类是一个切面
 public class Logger {
+
+    @Pointcut("execution(* top.niandui.service.impl.*.*(..))")
+    private void pt1() {}
 
     /**
      * 前置通知
      */
+//    @Before("pt1()")
     public void beforePrintLog() {
         System.out.println("前置通知Logger类中的beforePrintLog方法开始开始记录日志了。。。");
     }
@@ -17,6 +30,7 @@ public class Logger {
     /**
      * 后置通知
      */
+//    @AfterReturning("pt1()")
     public void afterReturningPrintLog() {
         System.out.println("后置通知Logger类中的afterReturningPrintLog方法开始开始记录日志了。。。");
     }
@@ -24,6 +38,7 @@ public class Logger {
     /**
      * 异常通知
      */
+//    @AfterThrowing("pt1()")
     public void afterThrowingPrintLog() {
         System.out.println("异常通知Logger类中的afterThrowingPrintLog方法开始开始记录日志了。。。");
     }
@@ -31,6 +46,7 @@ public class Logger {
     /**
      * 最终通知
      */
+//    @After("pt1()")
     public void afterPrintLog() {
         System.out.println("最终通知Logger类中的afterPrintLog方法开始开始记录日志了。。。");
     }
@@ -48,6 +64,7 @@ public class Logger {
      * spring中的环绕通知：
      *      它是spring框架为我们提供的一种可以在代码中手动控制增强法何时执行的方式
      */
+    @Around("pt1()")
     public Object aroundPrintLog(ProceedingJoinPoint pjp) {
         try {
             Object rtValue = null;
