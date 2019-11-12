@@ -13,7 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>day01_01_start</module>
-        <module>day01_01_start</module>
     </modules>
 
 
