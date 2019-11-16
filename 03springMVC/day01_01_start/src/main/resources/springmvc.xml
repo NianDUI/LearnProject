@@ -23,6 +23,20 @@
     </bean>
 
     <!-- 配置，开启SpringMVC框架注解的支持 -->
-    <mvc:annotation-driven></mvc:annotation-driven>
+<!--    <mvc:annotation-driven></mvc:annotation-driven>-->
+
+
+    <!-- 配置自定义类型转化器 -->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="top.niandui.utils.StringToDateConverter"></bean>
+            </set>
+        </property>
+    </bean>
+
+    <!-- 默认类型转化是没有生效的，需要配置生效  -->
+    <!-- 配置，开启SpringMVC框架注解的支持，并让自定义类型转化器生效 -->
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
 
 </beans>
