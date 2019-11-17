@@ -24,6 +24,23 @@
 </form>
 
 <a href="anno/testPathVariable/10">@PathVariable</a>
+<br>
 
+<a href="anno/testRequestHeader">@RequestHeader</a>
+<br>
+
+<a href="anno/testCookieValue">@CookieValue</a>
+
+
+<h3>@ModelAttribute</h3>
+<form action="anno/testModelAttribute" method="post">
+    用户的姓名：<input type="text" name="uname"/></br>
+    用户的年龄：<input type="text" name="age"/></br>
+    <input type="submit" value="提交表单"/>
+</form>
+
+<a href="anno/testSessionAttribute">@SessionAttribute</a>
+<a href="anno/getSessionAttribute">getSessionAttribute</a>
+<a href="anno/delSessionAttribute">delSessionAttribute</a>
 </body>
 </html>
