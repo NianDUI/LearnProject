@@ -14,6 +14,7 @@
     <modules>
         <module>day01_01_start</module>
         <module>day02_01_response</module>
+        <module>day02_02_fileupload</module>
     </modules>
 
 
