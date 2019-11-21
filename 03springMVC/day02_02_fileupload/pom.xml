@@ -64,6 +64,18 @@
     </dependency>
     <!-- end 文件上传组件 -->
 
+    <!-- start 文件上传复制组件 传到文件服务器 -->
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-core</artifactId>
+      <version>1.19.4</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-client</artifactId>
+      <version>1.19.4</version>
+    </dependency>
+    <!-- end 文件上传复制组件 传到文件服务器 -->
   </dependencies>
 
   <build>
