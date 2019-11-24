@@ -16,6 +16,8 @@
         <module>day02_01_response</module>
         <module>day02_02_fileupload</module>
         <module>day02_02_fileuploadserver</module>
+        <module>day02_03_exception</module>
+        <module>day02_04_interceptor</module>
     </modules>
 
 
