@@ -62,22 +62,52 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *              k: v ：字面直接来写；
  *                  字符串默认不用加上单引号或者双引号；
  *                  ""：双引号：不会转义字符串里面的特殊字符；特殊字符会作为本身想表示的意思
- *                          (输出时保留不会原样)
+ *                          (输出时保留不会原样，保留原有格式)
  *                      name："zhangsan \n lisi"：输出；zhangsan 换行 lisi
  *                      (保存:"zhangsan \n lisi",输出:"zhangsan (换行) lisi") 输出时这里的\会转义后面的
- *                  ''：单引号：会转义特殊字符，特殊字符最终只是一个普通的字符串输出
+ *                  ''：单引号：会转义特殊字符，特殊字符最终只是一个普通的字符输出
  *                          (输出时保留原样)
  *                      name：'zhangsan \n lisi'：输出；zhangsan \n lisi
  *                      (保存:"zhangsan \\n lisi",输出:"zhangsan \n lisi") 输出时这里的\就是一个普通的\，因为本身存储时就是\\
  *
+ *                  !! 转类型
+ *                      !! str 123
  *
+ * 三、配置文件值注入：
+ *      先在pom文件中导入一个配置文件处理器，以后编写就会有提示了
+ *      配置文件：
+ *          person:
+ *              # lastName: zhangsan
+ *              last-name: zhangsan
+ *              age: 18
+ *              boss: false
+ *              birth: 2017/12/12
+ *              maps: {k1: v1,k2: 12}
+ *              lists:
+ *                  - lisi
+ *                  - zhaoliu
+ *              dog:
+ *                  name: 小狗
+ *                  age: 2
+ *      JavaBean：
+ *          @Component
+ *          @ConfigurationProperties(prefix = "person")
+ *          public class Person {
+ *              private String lastName;
+ *              private Integer age;
+ *              private Boolean boss;
+ *              private Date birth;
+ *              private Map<String, Object> maps;
+ *              private List<Object> lists;
+ *              private Dog dog;
+ *          }
  */
 @SpringBootApplication
 public class SpringBoot02ConfigApplication {
 
     public static void main(String[] args) {
-//        SpringApplication.run(SpringBoot02ConfigApplication.class, args);
-        System.out.println("zhangsan \n lisi");
+        SpringApplication.run(SpringBoot02ConfigApplication.class, args);
+//        System.out.println("zhangsan \n lisi");
     }
 
 }
