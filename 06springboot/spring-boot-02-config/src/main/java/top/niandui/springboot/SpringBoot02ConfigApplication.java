@@ -2,6 +2,7 @@ package top.niandui.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  *
@@ -101,8 +102,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *              private List<Object> lists;
  *              private Dog dog;
  *          }
+ *
  */
 @SpringBootApplication
+//@ImportResource(locations = {"classpath:bean.xml"})  // 加载指定的Spring配置文件
 public class SpringBoot02ConfigApplication {
 
     public static void main(String[] args) {

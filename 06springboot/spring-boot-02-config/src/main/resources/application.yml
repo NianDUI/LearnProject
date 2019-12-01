@@ -1,6 +1,28 @@
+# 第一个文档块
 server:
   port: 8081
 
+spring:
+  profiles:
+    active: prod  # 激活指定文档块
+
+
+---
+# 第二个文档块
+server:
+  port: 8083
+spring:
+  profiles: dev  # 指定它是什么环境
+---
+# 第三个文档块
+server:
+  port: 8084
+spring:
+  profiles: prod  # 指定它是什么环境
+
+
+
+---
 #person:
 ##  lastName: zhangsan
 #  age: 18
