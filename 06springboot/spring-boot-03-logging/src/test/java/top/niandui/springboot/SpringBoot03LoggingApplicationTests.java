@@ -24,7 +24,7 @@ class SpringBoot03LoggingApplicationTests {
         logger.info("这是info日志...");
         logger.warn("这是warn日志..."); // warn 警告
         logger.error("这是error日志...");
-
+        
     }
 
 }
