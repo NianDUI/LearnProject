@@ -16,6 +16,11 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <thymeleaf.version>3.0.11.RELEASE </thymeleaf.version>
+        <!-- 注意：布局功能的支持程序：thymeleaf3主程序 适配 layout2以上版本 -->
+        <!-- thymeleaf2 和 layout1 这是一个适配 -->
+        <!-- layout：是来做布局功能扩展的 -->
+        <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
     </properties>
 
     <dependencies>
@@ -30,6 +35,12 @@
             <groupId>org.webjars.bower</groupId>
             <artifactId>jquery</artifactId>
             <version>3.4.1</version>
+        </dependency>
+
+        <!-- 引入thymeleaf摸板引擎 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
         <dependency>
