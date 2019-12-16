@@ -1,10 +1,14 @@
 package top.niandui.springboot.controller;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -23,6 +27,17 @@ public class HelloController {
         map.put("users", Arrays.asList("zhangsan", "lisi", "wangwu"));
         // classpath:/templates/success.html
         return "success";
+    }
+
+    @ResponseBody
+    @RequestMapping("/testData")
+    public Map testData(Date data, Timestamp timestamp) {
+        System.out.println(data);
+        System.out.println(timestamp);
+        Map map = new HashMap();
+        map.put("data", data);
+        map.put("timestamp", timestamp);
+        return map;
     }
 
 }
