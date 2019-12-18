@@ -13,6 +13,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * WebMvcAutoConfiguration
+ *      做WebMvc的自动配置
+ *
+ * MessageSourceAutoConfiguration
+ *      做国际化组件的自动配置
+ */
 @SpringBootApplication
 public class SpringBoot04WebRestfulcrudApplication {
 

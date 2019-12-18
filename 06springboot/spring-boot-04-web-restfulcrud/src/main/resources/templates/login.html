@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
+    <!-- @{...} 用于链接的，自动加上配置的 -->
     <link href="" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.css}">
     <script src="jquery-3.4.1.min.js" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
 </head>
 <body>
-    <h1>登录</h1>
+<!-- #{...} 用于获取国际化资源-->
+<form action="login.html">
+    <h1 th:text="#{login.tip}">登录</h1>
+    <label th:text="#{login.username}">用户名</label><br>
+    <input type="text" placeholder="用户名" th:placeholder="#{login.username}" name=""><br>
+    <label th:text="#{login.password}">密码</label><br>
+    <input type="text" placeholder="密码" th:placeholder="#{login.password}" name=""><br>
+    <br>
+    <input type="checkbox" name="">[[#{login.remember}]]<br>
+    <button type="submit" th:text="#{login.btn}">登陆</button><br>
+    <a th:href="@{/index.html(l='zh_CN')}">中文</a>
+    <a th:href="@{/index.html(l='en_US')}">英文</a><br>
+</form>
 
 </body>
 </html>
