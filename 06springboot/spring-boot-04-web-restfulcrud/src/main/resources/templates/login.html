@@ -9,12 +9,14 @@
 </head>
 <body>
 <!-- #{...} 用于获取国际化资源-->
-<form action="login.html">
+<form action="login.html" th:action="@{/user/login}" method="post">
     <h1 th:text="#{login.tip}">登录</h1>
+    <!-- th:if="${...}" 判断条件成立以后，生成改标签（if优先级高于text）。不为空 -->
+    <p style="color: red" th:text="${message}" th:if="${not #strings.isEmpty(message)}"></p>
     <label th:text="#{login.username}">用户名</label><br>
-    <input type="text" placeholder="用户名" th:placeholder="#{login.username}" name=""><br>
+    <input type="text" placeholder="用户名" name="username" th:placeholder="#{login.username}"><br>
     <label th:text="#{login.password}">密码</label><br>
-    <input type="text" placeholder="密码" th:placeholder="#{login.password}" name=""><br>
+    <input type="text" placeholder="密码" name="password" th:placeholder="#{login.password}"><br>
     <br>
     <input type="checkbox" name="">[[#{login.remember}]]<br>
     <button type="submit" th:text="#{login.btn}">登陆</button><br>

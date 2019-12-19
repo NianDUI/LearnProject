@@ -17,8 +17,11 @@ import java.util.Locale;
  * WebMvcAutoConfiguration
  *      做WebMvc的自动配置
  *
+ * 06：区域信息国际化
  * MessageSourceAutoConfiguration
  *      做国际化组件的自动配置
+ *
+ * 07：登录和拦截器
  */
 @SpringBootApplication
 public class SpringBoot04WebRestfulcrudApplication {
