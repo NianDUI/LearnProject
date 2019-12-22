@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>公共元素</title>
+</head>
+<body>
+<!-- th:fragment="topbar"  抽取片段 -->
+<!-- topbar -->
+<div th:fragment="topbar">[[${session.loginUser}]]</div>
+
+<!-- sidebar -->
+<nav id="sidebar">
+    <ul>
+        <li>
+            <a class="nav-link active" href="xxx" th:href="@{/main.html}"
+                th:class="${activeUri=='main.html'?'nav-link active':'nav-link'}">首页</a>
+        </li>
+        <li>
+            <a class="nav-link" href="xxx" th:href="@{/emps}"
+               th:class="${activeUri=='emps'?'nav-link active':'nav-link'}">员工管理</a>
+        </li>
+    </ul>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.css}">
+    <script src="jquery-3.4.1.min.js" th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+</head>
+<body>
+<!-- 引入抽取的topbar  th:insert="~{摸板名::选择器/片段名}" -->
+<!-- 摸板名：会使用 thymeleaf 的前后缀配置规则进行解析 -->
+<div th:replace="~{commens/bar :: topbar}"></div>
+<h1>添加员工</h1>
+
+<!-- 引入侧边栏，使用选择器 -->
+<div th:replace="commens/bar :: #sidebar(activeUri='emps')"></div>
+
+<div>
+    <!-- 需要区分是员工修改还是添加； ${emp!=null}? -->
+    <form method="post" th:action="@{/emp}">
+        <!-- 发送put请求修改员工数据 -->
+        <!--
+            1、SpringMVC中配置HiddenHttpMethodFilter(将请求转成指定的方式)(SpringBoot自动配置好的)
+            2、页面创建一个post表单
+            3、创建一个input项，name="_method"；值就是我们指定的请求方式
+        -->
+        <input type="hidden" name="_method" value="put" th:if="${emp!=null}"/>
+        <input type="hidden" name="id" th:if="${emp!=null}" th:value="${emp.id}">
+        LastName：<input type="text" name="lastName" th:value="${emp!=null}?${emp.lastName}"><br>
+        Email：<input type="text" name="email" th:value="${emp!=null}?${emp.email}"><br>
+        Gender：
+        <select name="gender">
+            <option value="1" th:selected="${emp!=null}?${emp.gender == 1}">男</option>
+            <option value="0" th:selected="${emp!=null}?${emp.gender == 0}">女</option>
+        </select> <br>
+        Birth：<input type="text" name="birth" th:value="${emp!=null}?${#dates.format(emp.birth, 'yyyy-MM-dd')}"><br>
+        <button type="submit" th:text="${emp!=null}?'修改':'添加'">添加</button>
+    </form>
+</div>
+
+</body>
+</html>

@@ -52,9 +52,9 @@ public class SpringBoot04WebRestfulcrudApplication {
         }
     }
 
-    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+    private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     // 添加一个自己的格式化转化器
-    @Bean
+//    @Bean
     public Formatter<Date> myDateFormatter() {
         return new Formatter<Date>() {
 
