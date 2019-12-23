@@ -22,6 +22,10 @@ import java.util.Locale;
  *      做国际化组件的自动配置
  *
  * 07：登录和拦截器
+ *
+ * ErrorMvcAutoConfiguration
+ *      mvc错误处理的自动配置
+ *
  */
 @SpringBootApplication
 public class SpringBoot04WebRestfulcrudApplication {
@@ -39,7 +43,7 @@ public class SpringBoot04WebRestfulcrudApplication {
      * 可以debug中DispatcherServlet.doDispatch()打断点，
      * 查看this.viewResolvers.0.viewResolvers 属性查看是否有自己的视图解析器
      */
-    @Bean
+//    @Bean
     public ViewResolver myViewResolver() {
         return new MyViewResolver();
     }

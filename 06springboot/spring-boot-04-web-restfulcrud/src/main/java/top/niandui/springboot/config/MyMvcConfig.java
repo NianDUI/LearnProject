@@ -54,8 +54,8 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 // 添加登录拦截器，拦截任意请求，排除登录请求
                 // 静态资源； *.css , *.js
                 // SpringBoot已经做好了静态资源映射
-                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                    .excludePathPatterns("/", "/index.html", "/user/login");
+//                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+//                    .excludePathPatterns("/", "/index.html", "/user/login");
             }
         };
     }
