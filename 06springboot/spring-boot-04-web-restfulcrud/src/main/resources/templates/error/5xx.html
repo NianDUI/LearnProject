@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>404</title>
+    <title>5xx</title>
 </head>
 <body>
 <!-- 精确优先 -->
@@ -12,5 +12,9 @@
 <h2>exception：[[${exception}]]</h2>异常对象
 <h2>message：[[${message}]]</h2>异常消息
 <h2>errors：[[${errors}]]</h2>JSR303数据校验的错误信息
+
+<h2>company：[[${company}]]</h2> 自定义 自定义错误属性 返回的数据
+<h2>ext.code：[[${ext.code}]]</h2> 自定义 自定义异常处理器 在request中保存的数据
+<h2>ext.message：[[${ext.message}]]</h2> 自定义 自定义异常处理器 在request中保存的数据
 </body>
 </html>

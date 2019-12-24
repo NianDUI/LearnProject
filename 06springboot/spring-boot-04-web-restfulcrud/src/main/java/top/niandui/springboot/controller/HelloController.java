@@ -3,7 +3,9 @@ package top.niandui.springboot.controller;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import top.niandui.springboot.exception.UserNotExistException;
 
 import java.sql.Timestamp;
 import java.util.Arrays;
@@ -16,7 +18,10 @@ public class HelloController {
 
     @ResponseBody
     @RequestMapping("/hello")
-    public String hello() {
+    public String hello(@RequestParam("user") String user) {
+        if ("aaa".equals(user)) {
+            throw new UserNotExistException();
+        }
         return "Hello World";
     }
 
