@@ -12,6 +12,7 @@ import java.util.Map;
 /**
  * 四、Web开发 7、错误处理机制、2如何定制错误响应
  * 自定义异常处理器
+ *      ：指定异常的处理
  *      使用@ControllerAdvice 注解 该类
  *      使用@ExceptionHandler(异常类.class) 注解 处理的方法
  *
