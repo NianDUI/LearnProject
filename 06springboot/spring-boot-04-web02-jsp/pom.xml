@@ -9,52 +9,28 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>top.niandui</groupId>
-    <artifactId>spring-boot-04-web-restfulcrud</artifactId>
+    <artifactId>spring-boot-04-web02-jsp</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-04-web-restfulcrud</name>
+    <packaging>war</packaging>
+    <name>spring-boot-04-web02-jsp</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <thymeleaf.version>3.0.11.RELEASE </thymeleaf.version>
-        <!-- 注意：布局功能的支持程序：thymeleaf3主程序 适配 layout2以上版本 -->
-        <!-- thymeleaf2 和 layout1 这是一个适配 -->
-        <!-- layout：是来做布局功能扩展的 -->
-        <thymeleaf-layout-dialect.version>2.4.1</thymeleaf-layout-dialect.version>
     </properties>
 
     <dependencies>
-        <!-- 引入web模块 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- 引入jquery-webjar -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.4.1</version>
-        </dependency>
-
-        <!-- 引入bootstrap -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>4.4.1</version>
-        </dependency>
-
-        <!-- 引入thymeleaf摸板引擎 -->
+        <!-- 2、将嵌入式的Tomcat指定为provided，tomcat已经有了 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

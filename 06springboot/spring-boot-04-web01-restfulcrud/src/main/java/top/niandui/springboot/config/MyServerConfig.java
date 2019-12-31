@@ -30,7 +30,7 @@ import java.util.EventListener;
 public class MyServerConfig {
 
     /********************* 8 嵌入式Servlet容器配置********************************/
-    // 配置嵌入式的Servlet容器
+    // 配置嵌入式的Servlet容器，定制器
     @Bean
     public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer() {
         return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
