@@ -31,6 +31,7 @@ public class MyServerConfig {
 
     /********************* 8 嵌入式Servlet容器配置********************************/
     // 配置嵌入式的Servlet容器，定制器
+    // 1.x 使用的是 EmbeddedServletContainerCustomizer . ConfigurableEmbeddedServletContainer
     @Bean
     public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer() {
         return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {

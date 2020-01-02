@@ -26,6 +26,35 @@ import java.util.Locale;
  * ErrorMvcAutoConfiguration
  *      mvc错误处理的自动配置
  *
+ * 08：Servlet 容器
+ *      EmbeddedWebServerFactoryCustomizerAutoConfiguration
+ *          嵌入式Web服务工厂定制器自动配置
+ *
+ *      ServletWebServerFactoryAutoConfiguration
+ *          ServletWeb服务工厂自动配置 ↓
+ *      ServletWebServerFactoryAutoConfiguration.BeanPostProcessorsRegistrar.class
+ *          ：ServletWeb服务工厂自动配置。Bean后置处理器注册器
+ *          WebServerFactoryCustomizerBeanPostProcessor
+ *              ：Web服务工厂定制器Bean后置处理器
+ *              ：bean初始化前后（创建完对象，还没有属性赋值）执行初始化工作
+ *              方法：调用顺序
+ *                  postProcessBeforeInitialization() ↓
+ *                      postProcessBeforeInitialization() ↓
+ *                          getCustomizers() ↓
+ *                              getWebServerFactoryCustomizerBeans() ↓
+ *                                  this.beanFactory.getBeansOfType(WebServerFactoryCustomizer.class, false, false).values();
+ *                                  从容器beanFactory中获取，WebServerFactoryCustomizer.class 的。
+ *
+ *
+ *      ServletWebServerFactoryConfiguration
+ *          ServletWeb服务工厂配置 ↓
+ *          @Bean TomcatServletWebServerFactory TomcatServletWeb服务工厂 ↓
+ *              public WebServer getWebServer(ServletContextInitializer... initializers) {}
+ *                  方法：创建tomcat容器对象
+ *      ServletWebServerFactoryCustomizer
+ *          ServletWeb服务工厂定制器
+ *          ServerProperties 的设置,在该类中进行设置。
+ *
  */
 @SpringBootApplication
 public class SpringBoot04WebRestfulcrudApplication {
