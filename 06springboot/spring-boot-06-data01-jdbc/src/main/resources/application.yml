@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://39.105.204.226:3306/jdbc
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 是一个List数组，指定建表语句 //自己制定存放目录和文件名
+    # schema为表初始化语句，data为数据初始化，默认加载schema.sql与data.sql。
+    # 脚本位置可以通过spring.datasource.schema  与spring.datasource.data 来改变
+    schema:
+      - classpath:department.sql
+    # 初始化模式（springboot2.0），其中有三个值，always为始终执行初始化，embedded只初始化内存数据库（默认值）,如h2等，never为不执行初始化
+    initialization-mode: always
