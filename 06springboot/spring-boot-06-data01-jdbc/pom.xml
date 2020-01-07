@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>top.niandui</groupId>
-    <artifactId>spring-boot-06-data-jdbc</artifactId>
+    <artifactId>spring-boot-06-data01-jdbc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-06-data01-jdbc</name>
     <description>Demo project for Spring Boot</description>
@@ -27,6 +27,19 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- 切换数据源 -->
+        <!-- 引入druid数据源 -->
+        <!--<dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.21</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.21</version>
         </dependency>
 
         <dependency>
