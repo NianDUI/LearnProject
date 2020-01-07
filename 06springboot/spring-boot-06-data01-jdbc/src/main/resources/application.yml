@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: root
-    url: jdbc:mysql://39.105.204.226:3306/jdbc
+    url: jdbc:mysql://127.0.0.1:3306/jdbc
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 是一个List数组，指定建表语句 //自己制定存放目录和文件名
     # schema为表初始化语句，data为数据初始化，默认加载schema.sql与data.sql。
