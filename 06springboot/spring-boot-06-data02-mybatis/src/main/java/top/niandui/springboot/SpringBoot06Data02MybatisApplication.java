@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  *   1、注解版
  *      MyBatisConfig.java      MyBatis配置文件
+ *          可以向容器中加入 ConfigurationCustomizer 组件定制 mybatis的配置
  *      DepartmentMapper.java   注解版的mapper接口
  *      使用@MapperScan批量扫描所有mapper接口 @MapperScan(basePackages = "top.niandui.springboot.mapper")
  */
