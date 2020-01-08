@@ -16,9 +16,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * 2、切换数据源
  * 引入数据源jar包，
- * 引入Druid包需要配置，druid-spring-boot-starter包不需要配置
- *      配置数据源spring.datasource.type=com.alibaba.druid.pool.DruidDataSource
- *      进行Druid数据源配置DruidConfig.java
+ * 引入druid包需要配置，druid-spring-boot-starter包不需要type配置
+ * 在application.yml中进行数据源的额外配置，可不配置。
  *
  */
 @SpringBootApplication
