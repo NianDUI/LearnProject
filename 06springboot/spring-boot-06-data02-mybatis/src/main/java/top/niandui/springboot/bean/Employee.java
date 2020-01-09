@@ -15,5 +15,5 @@ public class Employee {
     private String lastName;
     private String email;
     private Integer gender;
-    private Integer d_id;
+    private Integer dId;
 }

@@ -69,4 +69,15 @@ spring:
         profile-enable: true
       # Spring监控配置，说明请参考Druid Github Wiki，配置_Druid和Spring关联监控配置
       # Spring监控AOP切入点，如x.y.z.service.*,配置多个英文逗号分隔
-      #aop-patterns: com.synqnc.service.*.impl.*.(..),com.synqnc.dao.*.*.(..)
+      aop-patterns: top.niandui.springboot.controller.*.(..),top.niandui.springboot.mapper.*.(..)
+
+
+# mybatis配置
+mybatis:
+  # 指定全局配置文件的位置
+  #config-location: classpath:mybatis/mybatis-config.xml
+  # 指定sql映射文件位置
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    # 开启驼峰命名法映射规则
+    map-underscore-to-camel-case: true
