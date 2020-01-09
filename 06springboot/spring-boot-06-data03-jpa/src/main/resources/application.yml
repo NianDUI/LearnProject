@@ -5,10 +5,10 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-  # \u548C jpa \u6709\u5173\u7684\u914D\u7F6E
+  # 和 jpa 有关的配置
   jpa:
     hibernate:
-      # \u5B9A\u4E49\u6570\u636E\u8868\u7684\u751F\u6210\u7B56\u7565\uFF0Cupdate\uFF1A\u66F4\u65B0\u6216\u8005\u521B\u5EFA\u6570\u636E\u8868
+      # 定义数据表的生成策略，update：更新或者创建数据表
       ddl-auto: update
-    # \u5728\u63A7\u5236\u53F0\u663E\u793Asql
+    # 在控制台显示sql
     show-sql: true
