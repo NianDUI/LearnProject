@@ -66,8 +66,8 @@ spring:
         url-pattern: /*
         # 排除一些不必要的url，比如*.js,/jslib/*等等
         exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
-        # session统计功能
-        session-stat-enable: true
+        # session统计功能, false：开启, true：关闭
+        session-stat-enable: false
         # 缺省sessionStatMaxCount是1000个。你可以按需要进行配置
         session-stat-max-count: 1000
         # 可以配置principalSessionName，使得druid能够知道当前的session的用户是谁
