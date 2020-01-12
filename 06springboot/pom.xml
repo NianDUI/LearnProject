@@ -13,6 +13,18 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-boot-01-helloworld</module>
+        <module>spring-boot-01-helloworld-quick</module>
+        <module>spring-boot-02-config</module>
+        <module>spring-boot-02-config-02</module>
+        <module>spring-boot-02-autoconfig-03</module>
+        <module>spring-boot-03-logging</module>
+        <module>spring-boot-04-web01-restfulcrud</module>
+        <module>spring-boot-04-web02-jsp</module>
+<!--        <module>spring-boot-05-docker</module>-->
+        <module>spring-boot-06-data01-jdbc_and_druid</module>
+        <module>spring-boot-06-data02-mybatis</module>
+        <module>spring-boot-06-data03-jpa</module>
+        <module>spring-boot-07</module>
     </modules>
 
 

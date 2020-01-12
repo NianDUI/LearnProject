@@ -1,0 +1,7 @@
+# Initializers
+org.springframework.context.ApplicationContextInitializer=\
+top.niandui.springboot.listener.HelloApplicationContextInitializer
+
+# SpringApplicationRunListener
+org.springframework.boot.SpringApplicationRunListener=\
+top.niandui.springboot.listener.HelloSpringApplicationRunListener
